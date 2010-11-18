@@ -1,0 +1,113 @@
+﻿# ************************************************************************
+#	
+#	English translations
+#
+#
+#	**********************************************
+#	- File:			en_US.txt
+#	- Date:			Sep 8th, 2010
+#	- Version:		1.0
+#	- Author:		AdNovea (Laurent)
+#	- Modified by:	Andy Chuo (QNAPAndy)
+#	- Description:  English translation
+#	(This file was edited with Notepad2 regarding the tabs alignments)
+#
+# Strings are converted into defines with names equal to _UPPERCASE
+# ************************************************************************
+
+# Common strings for header/footer
+# ------------------------------------------------------------
+[common]
+charset					= UTF-8
+date_format				= F d, Y H:i:s
+admin_title 			= PMS Admin Center
+admin_menu 				= Menu
+admin_cfg 				= Configuration
+logout					= Logout
+
+# Button texts
+bt_register 			= Register
+bt_delete 				= Remove
+bt_delall 				= Delete all
+bt_back 				= Back
+bt_menu_back 			= Back to menu
+bt_continue 			= Continue
+bt_save 				= Save
+bt_submit 				= Submit
+bt_add 					= Add
+bt_close 				= Close
+bt_install 				= Install
+bt_restore 				= Restore
+bt_import				= Import
+bt_truncate				= Truncate
+bt_ok					= Ok
+
+# Common strings
+bytes					= B
+kbytes					= kB
+mbytes					= MB
+gbytes					= GB
+Done 					= Done !
+Readme 					= Readme
+here 					= here
+page 					= Page
+max						= max.
+Step 					= Step
+important				= <font color="#FF8888"><b>IMPORTANT: </b></font>
+warning					= <font color="#FF8888"><b>WARNING: </b></font>
+
+# Menu strings
+# ------------------------------------------------------------
+[menu]
+menu_app_starter		= App Starter
+menu_config_editor		= Config File Editor
+menu_renderer_editor	= Renderer File Editor
+menu_log_viewer			= Log Viewer
+menu_app_status			= Application Info
+
+menu_start_pms			= Start PMS
+menu_stop_pms			= Stop PMS
+
+menu_pms_conf			= PMS.conf
+menu_web_conf			= WEB.conf
+menu_movieinfo_conf		= MOVIEINFO.conf
+
+
+menu_log_console		= Log Console
+
+menu_info_pms_version	= PS3 Media Server
+menu_info_pmsencoder_version = PMSEncoder
+menu_info_movieinfo_version = MovieInfo
+menu_info_ffmpeg_version = FFmpeg (mt)
+menu_info_mplayer_version = MPlayer (mt)
+menu_info_mencoder_version = MEncoder (mt)
+menu_info_tsmuxer_version = tsMuxeR
+
+menu_info_renderer_bravia4500 	= Bravia 4500
+menu_info_renderer_bravia5500 	= Bravia 5500
+menu_info_renderer_freeboxhd 	= Freebox HD
+menu_info_renderer_Kuro 		= Kuro
+menu_info_renderer_PS3			= Play Station 3
+menu_info_renderer_panasonic_vieracast = Panasonic VieraCast
+menu_info_renderer_philips		= Philips Aurea/ Net TV
+menu_info_renderer_popcornhour 	= Popcorn Hour
+menu_info_renderer_realtek 		= Realtek-based players 
+menu_info_renderer_samsung 		= Samsung Wiselink
+menu_info_renderer_streamium	= Streamium
+menu_info_renderer_wdtvlive 	= WDTV Live
+menu_info_renderer_xbmc			= XBMC
+menu_info_renderer_xbox360		= XBox 360
+
+# Online configuration file edition
+# ------------------------------------------------------------
+[edit_file]
+edit_nofile				= File does not exist!
+edit_pms_conf 		= PMS Configuration Editor
+edit_cannot_save		= <font color="#FF8888"><b>Cannot save file </b></font>
+
+# Online log file viewer
+# ------------------------------------------------------------
+[view_logfile]
+view_nofile				= File does not exist!
+view_pms_debug_log 				= PMS Configuration Editor
+view_cannot_save		= <font color="#FF8888"><b>Cannot save file </b></font>

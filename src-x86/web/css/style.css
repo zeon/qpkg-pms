@@ -1,0 +1,441 @@
+/************************************************************************
+
+	CSS style sheet
+
+	**********************************************
+	- File:			style.css
+	- Date:			Sep 8th, 2010
+	- Version:		1.0
+	- Author:		AdNovea (Laurent)
+	- Modified by:	Andy Chuo (QNAPAndy)
+	- Description:  PMS Admin Center stylesheet
+
+*************************************************************************/
+
+@charset "utf-8";
+
+
+/* PMS styles
+	---------------------------------------------------------------------- */
+	BODY {
+		margin: 0px;
+		font: 11px Tahoma;
+		background:url("../images/blue_neon.png") no-repeat scroll 100% 0 #3C4C5A;
+		padding-bottom:30px;
+	}
+
+	A:link, A:visited, A:hover {
+		color: #444488;
+		font-weight: normal;
+		text-decoration: none;
+	}
+	
+	HR {
+		border-color: #9a9a9a;
+		border-width: 1px;
+	}
+	
+	P {
+		margin: 0;
+		padding: 0;
+	}
+	
+	FORM {
+		margin: 0;
+		padding: 5px 0;
+	}
+	
+	
+	h1 {
+		font: bold 14pt Arial;
+	}
+	
+	h2 {
+		font: bold 12pt Arial;
+	}
+	
+	h3 {
+		font: bold 10pt Arial;
+	}
+
+	textarea {
+		width: 100%;
+		height: 400px;
+		font: 12px Tahoma, Courier New;
+		color: #121212;
+		background-color: #525252;
+		
+	}
+	
+	#main {
+		width: 555px;
+		height: 540px;
+		margin: auto;
+		text-align: left;
+		font: normal 8pt Tahoma, Arial, Helvetica, sans-serif;
+	}
+	
+	.button {
+		font-size: 11px;
+		color: #2F3A55;
+		background-color: #ECE9D8;
+		border: 1px solid #aaa;
+		height:19px; 
+		font-weight:normal; 
+		height:19px; 
+		margin: 0 2px 0 8px;
+		padding: 0 5px 0;
+	}
+	
+	#button {
+		height: 32px;
+		width: 184px;
+		margin: auto;
+	}
+	
+	#banner {
+		position: relative;
+		right: 30px;
+		bottom: 30px;
+	}
+	
+	/* tables */
+	.tbl {
+		width: 400px;
+		border: 0;
+		border-collapse: collapse;
+		background-color: #FFFFFF;
+	}
+	
+	.tbl TH {
+		height: 22px;
+		color: #FFFFFF;
+		font-size: 12px;
+		background-color: #AAAAFF;
+	}
+	
+	.tbl TD {
+		color: #000000;
+	}
+
+	/* Edit box for configuration files and document displaying */	
+	#viewconfig {
+		width: 99%; 
+		height: 380px;	
+		font-variant: normal; 
+		font: normal 12px Courier New; 
+		line-height: normal; 
+		font-size-adjust: none; 
+		font-stretch: normal; 
+
+	}
+
+	/* SLIMBOX 
+	---------------------------------------------------------------------- */
+	
+	/* Clearing & Floating */
+	.clearfix:after {
+		content: ".";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	 }
+	.clearfix { display: block; }
+	
+
+	/* center page */
+	div.wrapper {
+		margin: auto;
+	}
+	
+	body.width-wide div.wrapper {
+		width:580px;
+	}
+	
+	#accordion {
+		margin:10px 0px;
+		padding-left:150px;
+	}
+	
+	h3.toggler {
+		background:	transparent url('../images/accordion_toggle1.png') no-repeat scroll left top !important;
+		border:	medium none !important;
+		color:	#545454;
+		cursor:	pointer;
+		height:	27px;
+		margin:	0 !important;
+		padding: 3px 6px 0 0px !important;
+		font-weight: bold;
+		font-size: 12px;
+	}
+	
+	div.element p, div.element {
+		margin:	0px;
+		padding:	5px;
+	}
+	
+	div.element span {
+		text-align: center;
+		color: #999;
+		font: 9pt Tahoma;
+	}
+
+	div#element span A:link{
+		color: #999;
+	}
+	
+	div#wrapper {
+		clear: both;
+		margin: -3px 0 0;
+		padding: 0;
+		width: auto;
+	}
+	
+	div#wrapper div.wrapper-container-t {
+		padding: 0 10px;
+		position: relative;
+	}
+	
+	div#wrapper div.wrapper-tl {
+		background:	transparent url('../images/wrapper_tl.png') no-repeat scroll 0 0;
+		height:	10px;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 10px;
+	}
+	
+	div#wrapper div.wrapper-tr {
+		background:	transparent url('../images/wrapper_tr.png') no-repeat scroll 0 0;
+		height:	10px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 10px;
+	}
+	
+	div#wrapper div.wrapper-t {
+		background: transparent url('../images/wrapper_t.png') repeat-x scroll 0 0;
+		height:10px;
+	}
+	
+	div#wrapper div.wrapper-b {
+		background: #FFFFFF url('../images/wrapper_b.gif') repeat-x scroll 0 100%;
+	}
+	
+	div#wrapper div.wrapper-l {
+		background: transparent url('../images/wrapper_l.png') repeat-y scroll 0 0;
+	}
+	
+	div#wrapper div.wrapper-r {
+		background: transparent url('../images/wrapper_r.png') repeat-y scroll 100% 0;
+	}
+	
+	div#wrapper div.wrapper-bl {
+		background: transparent url('../images/wrapper_bl.gif') no-repeat scroll 0 100%;
+	}
+	
+	div#wrapper div.wrapper-br {
+		background: transparent url('../images/wrapper_br.gif') no-repeat scroll 100% 100%;
+	}
+	
+	div#wrapper div.wrapper-container {
+		margin-top:-10px;
+	}
+	
+	div#middle {
+		clear: both;
+		margin: 10px 0 -12px 0;
+		padding: 0;
+		width: auto;
+	}
+	
+	div#main {
+		background: transparent none repeat scroll 0 0;
+		padding: 150px 0px 0px 0px;
+	}
+	
+	div#footer {
+		/*background:#DCDFE1 url(../images/footer_bg.png) repeat-x scroll 0 0;*/
+		clear: both;
+		margin: auto;
+		padding: 0px 5px 2px;
+		text-align: center;
+		width: 100%;
+		color: #999;
+		font: 7pt Tahoma;
+	}
+	
+	div#footer A:link {
+		color: #999;
+	}
+
+	/* SLIMBOX (Customized version) */
+
+	#lbOverlay {
+		position: absolute;
+		top:0; left: 0;
+		width: 100%;
+		background-color: #000;
+		cursor: pointer;
+	}
+	
+	#lbCenter, #lbBottomContainer {
+		position: absolute;
+		left: 50%; padding:0;
+		overflow: hidden;
+		background-color: transparent;
+
+	}
+	
+	.lbLoading {
+		background: #fff url(../images/sb_loading.gif) no-repeat center;
+	}
+	
+	#lbCanvas {
+		border: 0px solid #fff;
+		overflow:hidden;
+		height: 770px !important;
+	}
+	
+	#lbCanvas iframe, #lbCanvas img {
+		border:0px solid #999;
+		margin:0; padding:0;
+		width: 810px !important;
+		overflow:hidden;
+	}
+	
+	#lbPrevLink, #lbNextLink {
+		display: block;
+		position: absolute;
+		top: 10px;
+		width: 70px;
+		background:url(../images/sb_anchor_spacer.gif);
+	}
+	
+	#lbPrevLink {
+		left: 0;
+	}
+	
+	#lbPrevLink:hover {
+		background: transparent url(../images/sb_prevlabel.gif) no-repeat;
+	}
+	
+	#lbNextLink {
+		right: 0;
+	}
+	
+	#lbNextLink:hover {
+		background: transparent url(../images/sb_nextlabel.gif) no-repeat;
+	}
+	
+	#lbBottom {
+		font-size:12px;
+		font-family: Verdana, Helvetica, sans-serif;
+		color: #666;
+		line-height: 1.4em;
+		text-align: left;
+		margin:0 0 0 10px; padding: 8px 0 0 0;
+		width: 782px !important;
+	}
+	
+	#lbCloseLink {
+		float: right;
+		height: 15px;
+		top: 11px;
+		left: 740px;
+		padding: 2px 9px 0;
+		position: absolute;
+		color: #2F3A55;
+		background-color: #aaa;
+		border: 1px solid #aaa;
+	}
+	
+	#lbCaption, #lbNumber {
+	}
+	
+	#lbCaption {
+		font-weight: bold;
+	}
+	
+	/* end SLIMBOX (Customized version) */
+
+	#loading {   
+		background: url(../images/load.gif) no-repeat;   
+		height:80px;
+		margin:auto;
+		width:64px;
+	}   
+				   
+	#content {   
+		font-family:arial;   
+		font-size:11px;   
+		float: left;
+	}   
+
+	#iconimg {   
+		float: left;
+	}   
+
+	/* Debug console */
+	#console			{ z-index:2; width: 730px; height: 320px; padding: 5px; border: 0; background-color: #000022; color: #88DD88; font: normal 8pt 'Courier New'; overflow-y: auto; border: solid 1px #444444 }
+
+	/* Overwrite JQuery CSS */
+	.ui-widget				{ font: 10pt Trebuchet MS,Helvetica,Arial,sans-serif; }
+
+	/* Curve JQuery CSS */
+	.cssParsedBox
+	{
+		margin: 0 auto 20px;
+		color: #ffffff;
+		width: 60%;
+		padding: 10px;
+		text-align: left;
+		background-color: #ff0000;
+		border: 10px solid #aaa;
+		-webkit-border-radius: 15px;
+		-moz-border-radius: 15px;
+		border-radius: 15px;
+		CCborderRadius: 15px;
+	}
+
+	.realBox {
+		margin: 0 auto 20px;
+		color: #ffffff;
+		width: 60%;
+		padding: 20px;
+		text-align: left;
+		background-color: #ff0000;
+		border: 10px solid #ffffff;
+	}
+
+	.menu_class {
+		border:1px solid #1c1c1c;
+	}
+
+	.the_menu {
+		display:none;
+		width:300px;
+		border: 1px solid #1c1c1c;
+	}
+
+	.the_menu li {
+		background-color: #302f2f;
+	}
+
+	.the_menu li a {
+		color:#FFFFFF; 
+		text-decoration:none; 
+		padding:10px; 
+		display:block;
+	}
+
+	.the_menu li a:hover {
+		padding:10px;
+		font-weight:bold;
+		color: #F00880;
+	}
+
+
+
