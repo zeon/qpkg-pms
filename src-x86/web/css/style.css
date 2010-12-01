@@ -68,10 +68,8 @@
 	}
 	
 	#main {
-		width: 555px;
 		height: 540px;
 		margin: auto;
-		text-align: left;
 		font: normal 8pt Tahoma, Arial, Helvetica, sans-serif;
 	}
 	
@@ -95,8 +93,8 @@
 	
 	#banner {
 		position: relative;
-		right: 30px;
 		bottom: 30px;
+		border: 0px;
 	}
 	
 	/* tables */
@@ -150,12 +148,12 @@
 	}
 	
 	body.width-wide div.wrapper {
-		width:580px;
+		width:601px;
 	}
 	
 	#accordion {
-		margin:10px 0px;
-		padding-left:150px;
+		margin:auto;
+		width:450px;
 	}
 	
 	h3.toggler {
@@ -361,11 +359,11 @@
 	
 	/* end SLIMBOX (Customized version) */
 
-	#loading {   
-		background: url(../images/load.gif) no-repeat;   
-		height:80px;
-		margin:auto;
-		width:64px;
+	.loading {   
+		background: url(../images/loader.gif) no-repeat;   
+		height:24px;
+		width:24px;
+		margin: auto;
 	}   
 				   
 	#content {   
@@ -373,7 +371,25 @@
 		font-size:11px;   
 		float: left;
 	}   
+	
+	.result{
+		margin: 0 auto;
+		color: #eee;
+		font-size: 11px;
+		text-align: center;
+		padding:10px 0;
+		height: 20px;
+	}
 
+	#result{
+		margin: 0 auto 5px;
+		color: #eee;
+		font-size: 11px;
+		text-align: center;
+		padding:10px 0;
+		height: 30px;
+	}
+	
 	#iconimg {   
 		float: left;
 	}   
@@ -387,12 +403,10 @@
 	/* Curve JQuery CSS */
 	.cssParsedBox
 	{
-		margin: 0 auto 20px;
-		color: #ffffff;
-		width: 60%;
+		margin: 10px auto 15px;
+		color: #aaa;
 		padding: 10px;
-		text-align: left;
-		background-color: #ff0000;
+		background-color: #333333;
 		border: 10px solid #aaa;
 		-webkit-border-radius: 15px;
 		-moz-border-radius: 15px;
@@ -437,5 +451,26 @@
 		color: #F00880;
 	}
 
+	#file-uploader-demo1 {
+		padding: 0px 0px 0px 15px;
+	}
 
+	#apply_settings, #reset_default{
+		border:1px solid #FFFFFF; 
+		padding: 0.3em 1em 0.4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	
+	#apply_settings span.ui-icon , #reset_default span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
 
+	#externalSite {
+		color: #88DD88;
+		font-size: 10px;
+	}

@@ -32,6 +32,19 @@
 		}
 	}
 	
+	function readFile2() {
+ 		if (httpObject.readyState == 4) {
+			if (httpObject.status == 200) {
+				var stResponse = httpObject.responseText.replace(/\n\r/g,"<br>").replace(/\r\n/g,"<br>").replace(/\n/g,"<br>").replace(/\r/g,"<br>");
+				document.getElementById('console').innerHTML = stResponse;
+				document.getElementById('console').scrollTop = document.getElementById('console').scrollHeight;
+			} else {
+				TimerSet = false;
+				document.getElementById('console').innerHTML = "File is missing or cannot be read!" + logFile;
+			}
+		}
+	}
+	
 	function loadFile(logType) {
 
 		if (logType !== undefined) {
@@ -55,4 +68,8 @@
 		httpObject.send(null);
 	}
 
-
+	function transferHTML2() {
+		httpObject.open("GET", logFile +"?nocache=" + Math.random(), true);
+		httpObject.onreadystatechange = readFile2;
+		httpObject.send(null);
+	}

@@ -18,9 +18,9 @@
 
 // Common system variables
 	define("_APPS_NAME",		"PMS Admin Center - QNAP PS3 Media Server");
-	define("_COPYRIGHTS",		"PMS Admin Center v0.1 by QNAPAndy.<br>All rights reserved for its respective owners.");
+	define("_COPYRIGHTS",		"PMS Admin Center v0.2 by QNAPAndy.<br>All rights reserved for its respective owners.");
 	define("PWD_MIN_LENGHT",	5);			// Minimum number of password characters
-	define("DOC_TYPE",			"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1-transitional.dtd\">");
+	define("DOC_TYPE", "<!DOCTYPE html>");
 	$admin_min_pwd = 5;						// Password minimum of characters
 	$lb_size = "width=800, height=450";		// Slimbox dimensions
 	define("ARCHIVE_SUFFIX",	"tgz");		// XMail archive files suffix
@@ -38,6 +38,8 @@
 	define("CMD_GREP",			"/bin/grep");
 	define("CMD_HOSTNAME",		"/bin/hostname");
 	define("CMD_IFCONFIG",		"/sbin/ifconfig");
+	define("CMD_LS",			"/bin/ls");
+	define("CMD_MORE",			"/bin/more");
 	define("CMD_PIDOF",			"/bin/pidof");
 	define("CMD_PS",			"/bin/ps");
 	define("CMD_TAR",			"/bin/tar");
@@ -76,7 +78,7 @@
 	define("QNAP_WEB_FOLDER", 		exec(CMD_GETCFG." SHARE_DEF defWeb -d Qweb -f /etc/config/def_share.info"));
 
 	// App version, etc
-	define("PMS_VERSION",			"v1.20.409");
+	define("PMS_VERSION",			"v1.20.412");
 	define("PMSENCODER_VERSION",	"v1.1.0");
 	define("MOVIEINFO_VERSION",		"build 14122009");
 	define("FFMPEG_VERSION",		"git-9e981c8");
@@ -103,12 +105,33 @@
 	
 	define("PMS_DEBUG_LOG",			"logs/pms_debug.log");	
 	define("PMS_DEBUG_LOG_NAME",	"Debug log");	
+	define("PMS_DEBUG_LOG_SIZE", 	exec(CMD_LS." -lah ".PMS_DIR.PMS_DEBUG_LOG." | awk \"{ print $5 }\" "));
 	define("PMS_DAILY_LOG",			"logs/pms-".exec(CMD_DATE." \+\%F").".log");
 	define("PMS_DAILY_LOG_NAME",	"Daily log");
-	
+	define("PMS_DAILY_LOG_SIZE", 	exec(CMD_LS." -lah ".PMS_DIR.PMS_DAILY_LOG." | awk \"{ print $5}\" "));
+
 	if (! file_exists(PMS_DIR.PMS_DAILY_LOG)) exec(WRITE_HTTP."pms=restart".WRITE_LOG);	
 	if (! file_exists(PMS_DIR.PMS_DEBUG_LOG)) exec(WRITE_HTTP."pms=restart".WRITE_LOG);	
+
+	define("PMS_SUB_CODEPAGE", 	exec(CMD_GETCFG." Default \"Subtitle Encoding\" -f /root/.mplayer/default_font.conf"));
+	define("PMS_SUB_LANG",	exec(CMD_MORE." ".PMS_ROOT."PMS.conf | grep \"# ".PMS_SUB_CODEPAGE."\" | sed \"s/\# ".PMS_SUB_CODEPAGE." (\(.*\)../\\1/\""));
+	define("PMS_FONT_NAME",	exec(CMD_GETCFG." Default \"Font Name\" -f /root/.mplayer/default_font.conf"));
+
+	define("LOGGING",		exec(CMD_GREP." \"<level>ALL</level>\" ".PMS_ROOT."logback.xml | /bin/cut -d \">\" -f 2 | /bin/cut -d \"<\" -f 1"));
 	
+	if (LOGGING == "ALL") 
+		define("PMS_LOGGING", "On");
+	else 
+		define("PMS_LOGGING", "Off");
+					
+	define("RUNNING",	"PMS is <span style='color: #fff; font-weigh: bold;'>running</span>");
+	define("STOPPED",	"PMS is <span style='color: #fff; font-weigh: bold;'>stopped</span>");
+	
+	//Checking the status of PMS
+	if (file_exists(PMS_PID_FILE)) $pms_status = RUNNING; else $pms_status = STOPPED;
+	
+	
+
 	// Execute a bash cmd
 	function bash($stt, $debug=false) {
 		$output = null; $result = exec($stt, $output);

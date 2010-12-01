@@ -9,8 +9,6 @@
 	- Description:  PMS Admin main page footer
 
 *************************************************************************/
-
-
 	echo "
 	</body>
 	</html>";

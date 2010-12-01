@@ -59,14 +59,15 @@ warning					= <font color="#FF8888"><b>WARNING: </b></font>
 # Menu strings
 # ------------------------------------------------------------
 [menu]
-menu_app_starter		= App Starter
-menu_config_editor		= Config File Editor
-menu_renderer_editor	= Renderer File Editor
-menu_log_viewer			= Log Viewer
-menu_app_status			= Application Info
+menu_app_starter			= App Starter
+menu_config_editor			= Config File Editor
+menu_subtitle_font_changer	= Subtitle Font Changer
+menu_log_viewer				= Log Viewer
+menu_app_status				= Application Info
 
 menu_start_pms			= Start PMS
 menu_stop_pms			= Stop PMS
+menu_restart_pms		= Restart PMS
 
 menu_pms_conf			= PMS.conf
 menu_web_conf			= WEB.conf
@@ -74,6 +75,7 @@ menu_movieinfo_conf		= MOVIEINFO.conf
 
 
 menu_log_console		= Log Console
+menu_truncate_log		= Truncate Log
 
 menu_info_pms_version	= PS3 Media Server
 menu_info_pmsencoder_version = PMSEncoder

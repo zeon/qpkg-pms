@@ -51,30 +51,23 @@ check_jre()
 }
 
 # Determine BASE installation location according to smb.conf
-find_base(){
-	BASE_GROUP="/share/HDA_DATA /share/HDB_DATA /share/HDC_DATA /share/HDD_DATA /share/HDE_DATA /share/HDF_DATA /share/HDG_DATA /share/HDH_DATA /share/MD0_DATA /share/MD1_DATA /share/MD2_DATA /share/MD3_DATA"
-	QPKG_BASE=
-	publicdir=`/sbin/getcfg $PUBLIC_SHARE path -f /etc/config/smb.conf`
+find_base() {	
+	BASE=""
+	DEV_DIR="HDA HDB HDC HDD HDE HDF HDG HDH MD0 MD1 MD2 MD3"
+	publicdir=`/sbin/getcfg Public path -f /etc/config/smb.conf`
 	if [ ! -z $publicdir ] && [ -d $publicdir ];then
-		publicdirp1=`/bin/echo $publicdir | /bin/cut -d "/" -f 2`
-		publicdirp2=`/bin/echo $publicdir | /bin/cut -d "/" -f 3`
-		publicdirp3=`/bin/echo $publicdir | /bin/cut -d "/" -f 4`
-		if [ ! -z $publicdirp1 ] && [ ! -z $publicdirp2 ] && [ ! -z $publicdirp3 ]; then
-			[ -d "/${publicdirp1}/${publicdirp2}/${PUBLIC_SHARE}" ] && QPKG_BASE="/${publicdirp1}/${publicdirp2}"
-		fi
-	fi
-
-  # Determine BASE installation location by checking where the Public folder is.
-	if [ -z $QPKG_BASE ]; then
-		for datadirtest in $BASE_GROUP; do
-			[ -d $datadirtest/$PUBLIC_SHARE ] && QPKG_BASE="/${publicdirp1}/${publicdirp2}"
+		BASE=`echo $publicdir |awk -F/Public '{ print $1 }'`
+	else
+		for datadirtest in $DEV_DIR; do
+			[ -d /share/${datadirtest}_DATA/Public ] && BASE=/share/${datadirtest}_DATA
 		done
 	fi
-	if [ -z $QPKG_BASE ] ; then
-		echo "The Public share not found."
+	if [ -z $BASE ]; then
+		echo "The base directory cannot be found."
 		_exit 1
+	else
+		QPKG_DIR=${BASE}/.qpkg/${QPKG_NAME}
 	fi
-	QPKG_DIR=${QPKG_BASE}/.qpkg/${QPKG_NAME}
 }
 
 create_sym_links()
@@ -83,17 +76,21 @@ create_sym_links()
 	[ -d /tmp/javaps3media ] || /bin/ln -sf ${QPKG_DIR}/javaps3media /tmp/
 	[ -d ${QPKG_DIR}/logs ] || /bin/mkdir ${QPKG_DIR}/logs
 	[ -d "/var/log/pms" ] || /bin/ln -sf ${QPKG_DIR}/logs /var/log/pms
-	[ -d "/usr/lib/codecs" ] || /bin/ln -sf "${QPKG_DIR}/codecs" /usr/lib
-	[ -f "/share/${QWEB_SHARE}/pms/logs/pms_debug.log" ] || /bin/ln -sf ${QPKG_DIR}/debug.log /share/${QWEB_SHARE}/pms/logs/pms_debug.log
+	[ -f "/share/${QWEB_SHARE}/pms/logs/pms_debug.log" ] || /bin/ln -sf ${QPKG_DIR}/logs/debug.log /share/${QWEB_SHARE}/pms/logs/pms_debug.log
 	[ -f "/share/${QWEB_SHARE}/pms/logs/${QPKG_LOG_FILE}" ] || /bin/ln -sf "${QPKG_LOG}" "/share/${QWEB_SHARE}/pms/logs/${QPKG_LOG_FILE}"
 	[ -d "/etc/mplayer" ] || /bin/ln -sf "${QPKG_DIR}/etc/mplayer" /etc/mplayer
-	
+	[ -d "/share/${QWEB_SHARE}/pms/.config/uploads" ] || /bin/ln -sf ${QPKG_DIR}/.mplayer "/share/${QWEB_SHARE}/pms/.config/uploads"
+	[ -d "/share/${QWEB_SHARE}/pms" ] || /bin/ln -sf ${QPKG_DIR}/web /share/${QWEB_SHARE}/pms
+	[ -f "/home/httpd/pms.cgi" ] || /bin/ln -sf /share/${QWEB_SHARE}/pms/pms.cgi /home/httpd/
 }
 
 change_permission()
 {
 	chmod 766 "${QPKG_DIR}/PMS.conf"
 	chmod 766 "${QPKG_DIR}/WEB.conf"
+	chmod 766 "${QPKG_DIR}/plugins/MOVIEINFO.conf"
+	chmod 777 "/share/${QWEB_SHARE}/pms/logs"
+	chmod 755 "/share/${QWEB_SHARE}/pms/pms.cgi"
 }
 
 enable_font_support()
@@ -103,19 +100,12 @@ enable_font_support()
 	[ -d "/root/.fonts" ] ||  /bin/ln -sf ${QPKG_DIR}/.mplayer /root/.fonts
 }
 
-setup_web_frontend(){
-	[ ! -d /share/${QWEB_SHARE}/pms ] || /bin/mkdir -p /share/${QWEB_SHARE}/pms
-	/bin/cp -af ${QPKG_DIR}/web/. /share/${QWEB_SHARE}/pms/
-	[ -f "/home/httpd/pms.cgi" ] || /bin/ln -sf /share/${QWEB_SHARE}/pms/pms.cgi /home/httpd/
-}
-
 find_base
-QPKG_LOG=${QPKG_DIR}/logs/pms-$DATE.log
-QPKG_LOG_FILE=pms-$DATE.log
+QPKG_LOG=${QPKG_DIR}/logs/pms-`date +%Y-%m-%d`.log
+QPKG_LOG_FILE=pms-`date +%Y-%m-%d`.log
 create_sym_links
 change_permission
 enable_font_support
-setup_web_frontend
 
 PMS_HOME=$QPKG_DIR
 

@@ -50,7 +50,40 @@
 				/etc/init.d/pms.sh truncate_log
 			fi
 			;;
-
+		change_subcp)
+			echo -e "PMS: Change subtitle codepage and font = ${paramVal1}, ${paramVal2}"
+			PATH=`/sbin/getcfg PMS "Install_Path" -f /etc/config/qpkg.conf`
+			SUBCP=`/bin/grep "mencoder_subcp" $PATH/PMS.conf | /bin/cut -d " " -f 3`
+			if [ ${SUBCP} != ${paramVal1} ]; then 
+				/bin/sed -i -e 's/'$SUBCP'/'$paramVal1'/g' $PATH/PMS.conf
+			fi
+			/sbin/setcfg Default "Subtitle Encoding" $paramVal1 -f /root/.mplayer/default_font.conf
+			/sbin/setcfg Default "Font Name" $paramVal2 -f /root/.mplayer/default_font.conf
+			/bin/ln -sf $paramVal2 /root/.mplayer/subfont.ttf
+			;;
+		reset_default)
+			echo -e "PMS: Reset subtitle codepage and font to default"
+			PATH=`/sbin/getcfg PMS "Install_Path" -f /etc/config/qpkg.conf`
+			SUBCP=`/bin/grep "mencoder_subcp" $PATH/PMS.conf | /bin/cut -d " " -f 3`
+			/bin/sed -i -e 's/'$SUBCP'/cp1252/g' $PATH/PMS.conf
+			
+			/sbin/setcfg Default "Subtitle Encoding" cp1252 -f /root/.mplayer/default_font.conf
+			/sbin/setcfg Default "Font Name" Vera.ttf -f /root/.mplayer/default_font.conf
+			/bin/ln -sf Vera.ttf /root/.mplayer/subfont.ttf
+			
+			/etc/init.d/pms.sh restart
+			;;
+		logging)
+			echo -e "PMS: Start/Stop Logging = ${paramVal1}"
+			PATH=`/sbin/getcfg PMS "Install_Path" -f /etc/config/qpkg.conf`
+			if [ $paramVal1 = "1" ]; then
+				/bin/sed -i 's/<level>OFF<\/level>/<level>ALL<\/level>/g' $PATH/logback.xml
+			fi
+			if [ $paramVal1 = "2" ]; then
+				/bin/sed -i 's/<level>ALL<\/level>/<level>OFF<\/level>/g' $PATH/logback.xml
+			fi
+			/etc/init.d/pms.sh restart
+			;;			
 		# Invalid command line parameters
 		*)
 			echo -e "ERROR: wrong params"

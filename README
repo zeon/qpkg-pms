@@ -1,7 +1,7 @@
 This QPKG contains the source files of applications obtained/downloaded from the URLs shown below:
 
-- PMS v1.20.412
-http://ps3mediaserver.googlecode.com/files/pms-generic-linux-unix-1.20.412.tgz
+- PMS v1.20.412-c31
+http://ps3mediaservercontrib.googlecode.com/files/pms-generic-linux-unix-1.20.412-c31.tgz
 
 Below's the configuration switch used to build each library as well as its source origin
 ====================================================
