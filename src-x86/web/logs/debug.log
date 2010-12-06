@@ -1,0 +1,13 @@
+
+Thu Dec  2 03:28:39 CST 2010
+
+CPU=i686 / KERNEL=2.6.33.2
+
+SCRIPT: pms.cgi param1[logging=2] param2[logging=2] param3[logging=2] param4[logging=2]
+PMS: Start/Stop Logging = 2
+Restarting PS3 UPnP Media Server PMS
+Stopped process in pidfile `/share/HDC_DATA/.qpkg/PMS/pms.pid' (pid 25764).
+/share/HDC_DATA/.qpkg/PMS/linux/start-stop-daemon: warning: failed to kill 25764: No such process
+pid: [25969]
+
+END OF SCRIPT: pms.cgi
